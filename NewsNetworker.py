@@ -53,11 +53,8 @@ def hasfollowers (user, thresh = 1):
 def hastweeted (listoftweets, thresh=1):
     #Takes a list of tweets of type tweepy.Cursor(api.user_timeline...) and tells you if the account has tweeted at least thresh times (thresh defaults to 1
     tweet = []
-    a = 0
     for tweet1 in listoftweets:
         tweet.append (tweet1)
-        a = a + 1
-    print (len (tweet), a)
     if len(tweet) > thresh:
         return (1)
     else:
