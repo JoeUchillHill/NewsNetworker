@@ -59,6 +59,23 @@ def hastweeted (listoftweets, thresh=1):
         return (1)
     else:
         return (0)
-    
 
+ def rate_limiter(api):
+    #This function checks if you've hit any twitter API limits. If you have, this module will pause your program until the limits reset,
+    #checking every 60 seconds to see if they have. 
+         # DUMMY CODE FOR TWEEPY ERROR HANDLING
+         #try:
+              # [Tweepy API Call]
+         #except tweepy.error.RateLimitError:
+         #    rate_limit_check()
+    rate_limit = api.rate_limit_status()["resources"]
+    while true:    
+        for rate in rate_limit:
+            endpoints = rate_limit[rate]
+            for endpoint in endpoints:
+                limit = rate_limit[rate][endpoint]["limit"]
+                remaining = rate_limit[rate][endpoint]["remaining"]
+                if remaining == 0:
+                    time.sleep(60)
+                else return
 
